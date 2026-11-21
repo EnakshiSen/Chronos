@@ -1,0 +1,60 @@
+
+101
+|1914|World War I|A conflict between major world powers is about to escalate into a global war.
+|Prevent the assassination that triggered the July Crisis
+|Encourage diplomatic negotiations
+|Allow the war to begin
+
+102
+|1939|World War II|Germany is preparing to invade Poland, threatening to trigger another global conflict.
+|Prevent the invasion of Poland
+|Attempt to negotiate peace
+|Allow the invasion
+
+103
+|1945|Hiroshima and Nagasaki|The United States is preparing to use atomic weapons against Japan.
+|Prevent the atomic bombings
+|Allow the bombings
+|Arrange a demonstration of the atomic weapon
+
+104
+|1687|Publication of Principia Mathematica|Isaac Newton is preparing to publish his groundbreaking work on classical mechanics and universal gravitation.
+|Ensure the book is published
+|Prevent its publication
+|Introduce Newton to an alternative scientific theory
+
+105
+|1857|Indian Rebellion of 1857|Indian soldiers and regional rulers are preparing to revolt against British East India Company rule.
+|Support the rebellion
+|Prevent the uprising
+|Attempt to unite the different rebel groups
+
+106
+|1903|Wright Brothers First Flight|Orville and Wilbur Wright are preparing to test their powered flying machine.
+|Help them achieve the first successful flight
+|Sabotage the experiment
+|Introduce an alternative aircraft design
+
+107
+|2014|Mangalyaan Mars Mission|India's Mars Orbiter Mission is approaching its critical Mars orbit insertion manoeuvre.
+|Ensure successful Mars orbit insertion
+|Alter the spacecraft trajectory
+|Abort the mission
+
+108
+|1637|Descartes and Analytic Geometry|René Descartes is preparing to publish La Géométrie, connecting algebra and geometry.
+|Ensure the publication succeeds
+|Prevent the publication
+|Introduce an alternative mathematical framework
+
+109
+|1610|Galileo's Astronomical Discoveries|Galileo is making observations that challenge the traditional understanding of the universe.
+|Support his astronomical discoveries
+|Suppress the observations
+|Introduce the findings to scientific authorities
+
+110
+|1956|Dartmouth Conference|Scientists are gathering to explore whether machines can simulate aspects of human intelligence.
+|Support the development of artificial intelligence
+|Prevent the conference
+|Introduce a radically different research direction
