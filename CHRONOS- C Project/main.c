@@ -11,6 +11,8 @@ struct Event
     char choiceA[200];
     char choiceB[200];
     char choiceC[200];
+    char subChoice[3][2][200];        // [original choice][which sub-option]
+    char subConsequence[3][2][300];
 };
 
 struct Event events[10];
@@ -19,6 +21,7 @@ int count = 0;
 int stability = 100;
 int decisionsMade = 0;
 
+int firstChoice[10] = {0};   // 0 = not chosen yet, otherwise 1/2/3
 // Function prototypes
 int readEvents();
 void displayTimeline();
@@ -41,7 +44,7 @@ int readEvents()
     if (fp == NULL)
     {
         printf("Error opening events.txt!\n");
-        return;
+        return 0;
     }
 
     while (fgets(line, sizeof(line), fp) != NULL)
@@ -91,8 +94,22 @@ int readEvents()
                     strcpy(events[count].choiceB, token);
                     break;
 
-                case 6:
+                                case 6:
                     strcpy(events[count].choiceC, token);
+                    break;
+
+                default:
+                    if (field >= 7 && field <= 18)
+                    {
+                        int k = field - 7;
+                        int c = k / 4;          // which original choice (0-2)
+                        int s = (k % 4) / 2;    // which sub-option (0-1)
+
+                        if (k % 2 == 0)
+                            strcpy(events[count].subChoice[c][s], token);
+                        else
+                            strcpy(events[count].subConsequence[c][s], token);
+                    }
                     break;
             }
 
@@ -101,7 +118,7 @@ int readEvents()
             token = strtok(NULL, "|");
         }
 
-        if (field == 7)
+        if (field == 19)
         {
             count++;
             field = 0;
@@ -144,6 +161,83 @@ void displayTimeline()
 
     printf("\n=========================================\n");
 }
+// Array index: 0=101, 1=102, 2=103, 3=104, 4=105, 5=106, 6=107, 7=108, 8=109, 9=110
+// Each event depends on up to 2 earlier events (-1 = none)
+const int deps[10][2] =
+{
+    { -1, -1 },   // 101 WWI: none
+    {  0, -1 },   // 102 WWII <- 101 WWI
+    {  3, -1 },   // 103 Hiroshima <- 104 Newton
+    {  7,  8 },   // 104 Newton <- 108 Descartes, 109 Galileo
+    { -1, -1 },   // 105 Rebellion of 1857: none
+    {  3, -1 },   // 106 Wright flight <- 104 Newton
+    {  3,  5 },   // 107 Mangalyaan <- 104 Newton, 106 Wright
+    {  8, -1 },   // 108 Descartes <- 109 Galileo
+    { -1, -1 },   // 109 Galileo: none
+    {  7, -1 }    // 110 Dartmouth <- 108 Descartes
+};
+
+// The first choice (1/2/3) that disrupts history in each event (0 = none)
+const int disruptChoice[10] = { 1, 0, 0, 2, 0, 2, 0, 2, 2, 0 };
+
+const char *brokenText[10][2] =
+{
+    { "", "" },
+    { "WWI did not unfold as in history, so the instability behind this invasion is missing and the plans rest on shaky ground.", "" },
+    { "Without Newton's Principia, classical mechanics never matured. Nuclear physics is decades away, so the bomb does not exist.", "" },
+    { "Without Descartes' analytic geometry, Newton lacks the mathematics to express his laws.",
+      "Without Galileo's observations, Newton lacks the groundwork on motion and the heavens." },
+    { "", "" },
+    { "Without Newton's mechanics, the Wrights have no theory of forces to design their wings.", "" },
+    { "Without Newton, orbital mechanics is unknown and a Mars orbit insertion is impossible.",
+      "Without the Wrights, aviation and aerospace engineering never took off." },
+    { "Without Galileo's discoveries, the scientific revolution stalls and Descartes' work lacks context.", "" },
+    { "", "" },
+    { "Without analytic geometry, the mathematical foundation for computing machines is missing.", "" }
+};
+
+int isBroken(int src)
+{
+    return firstChoice[src] != 0 && firstChoice[src] == disruptChoice[src];
+}
+
+int brokenCount(int index)
+{
+    int s, n = 0;
+
+    for (s = 0; s < 2; s++)
+    {
+        int src = deps[index][s];
+        if (src >= 0 && isBroken(src))
+            n++;
+    }
+    return n;
+}
+
+void showRipple(int index)
+{
+    int s, shown = 0;
+
+    for (s = 0; s < 2; s++)
+    {
+        int src = deps[index][s];
+
+        if (src < 0 || firstChoice[src] == 0)
+            continue;               // no dependency, or not visited yet
+
+        if (!shown)
+        {
+            printf("\n---------- RIPPLES FROM EARLIER HISTORY ----------\n");
+            shown = 1;
+        }
+
+        if (isBroken(src))
+            printf("! PARADOX (%s): %s\n", events[src].title, brokenText[index][s]);
+        else
+            printf("- %s (%d) unfolded as needed, so this era stands on solid ground.\n",
+                   events[src].title, events[src].year);
+    }
+}
 
 void showEvent(int index)
 {
@@ -153,68 +247,137 @@ void showEvent(int index)
 
     printf("\nEvent: %s", events[index].title);
     printf("\nYear: %d", events[index].year);
-
     printf("\n\n%s\n", events[index].scenario);
 
+    showRipple(index);
+    
     printf("\nWhat would you like to do?\n");
-
-    printf("\n1. %s", events[index].choiceA);
-    printf("\n2. %s", events[index].choiceB);
-    printf("\n3. %s", events[index].choiceC);
 
     makeDecision(index);
 }
 
-
-
 void makeDecision(int index)
 {
-    int decision;
+    const char *text[4];
+    int kind[4];   // 0 = original choice, 1 = unlocked sub-option
+    int id[4];     // original choice number (1-3) or sub-option number (0-1)
+    int n = 0, c, s, decision;
+    int fc = firstChoice[index];
 
-    printf("\nEnter your decision (1-3): ");
+    // Original choices, except the one already chosen
+    for (c = 1; c <= 3; c++)
+    {
+        if (c == fc)
+            continue;
+
+        text[n] = (c == 1) ? events[index].choiceA :
+                  (c == 2) ? events[index].choiceB :
+                             events[index].choiceC;
+        kind[n] = 0;
+        id[n] = c;
+        n++;
+    }
+
+    // Unlocked sub-options
+    if (fc != 0)
+    {
+        for (s = 0; s < 2; s++)
+        {
+            text[n] = events[index].subChoice[fc - 1][s];
+            kind[n] = 1;
+            id[n] = s;
+            n++;
+        }
+    }
+
+    // Show the menu
+    for (c = 0; c < n; c++)
+    {
+        printf("\n%d. %s", c + 1, text[c]);
+        if (kind[c] == 1)
+            printf("  [UNLOCKED]");
+    }
+
+    printf("\n\nEnter your decision (1-%d): ", n);
     scanf("%d", &decision);
 
     printf("\n====================================\n");
 
-    if (decision == 1)
-    {
-        printf("Decision selected: %s\n", events[index].choiceA);
-        stability += 5;
-        printf("\nYou have successfully altered this historical event.");
-    }
-    else if (decision == 2)
-    {
-        printf("Decision selected: %s\n", events[index].choiceB);
-        stability -= 5;
-        printf("\nThe timeline has experienced an unexpected disturbance.");
-    }
-    else if (decision == 3)
-    {
-        printf("Decision selected: %s\n", events[index].choiceC);
-        stability -= 10;
-        printf("\nYour intervention has created an unpredictable outcome.");
-    }
-    else
+    if (decision < 1 || decision > n)
     {
         printf("\nInvalid decision! No changes made.");
         return;
     }
 
-    decisionsMade++;
-    showConsequence(index, decision);
+    int pick = decision - 1;
+    printf("Decision selected: %s\n", text[pick]);
 
+    if (kind[pick] == 0)
+    {
+        // Original choice (same effects as before)
+        int choice = id[pick];
+
+        if (choice == 1)
+        {
+            stability += 5;
+            printf("\nYou have successfully altered this historical event.");
+        }
+        else if (choice == 2)
+        {
+            stability -= 5;
+            printf("\nThe timeline has experienced an unexpected disturbance.");
+        }
+        else
+        {
+            stability -= 10;
+            printf("\nYour intervention has created an unpredictable outcome.");
+        }
+
+        if (firstChoice[index] == 0)
+            firstChoice[index] = choice;   // unlocks sub-options for next visit
+
+        decisionsMade++;
+        showConsequence(index, choice);
+    }
+    else
+    {
+        // Unlocked sub-option
+        int sub = id[pick];
+
+        if (sub == 0)
+        {
+            stability += 5;
+            printf("\nYour follow-up action strengthens the timeline.");
+        }
+        else
+        {
+            stability -= 5;
+            printf("\nYour follow-up action ripples through time.");
+        }
+
+        decisionsMade++;
+
+        printf("\n\n========== A New Path Unfolds ==========\n");
+        printf("%s", events[index].subConsequence[fc - 1][sub]);
+        printf("\n========================================\n");
+    }
+
+        // Paradox penalty: broken dependencies hurt stability
+    int penalty = brokenCount(index) * 5;
+    if (penalty > 0)
+    {
+        stability -= penalty;
+        printf("\n\nParadox penalty: -%d stability (history this event depends on was changed).", penalty);
+    }
     // Stability cannot exceed 100%
     if (stability > 100)
-    {
         stability = 100;
-    }
 
     printf("\n\nTimeline Stability: %d%%", stability);
     printf("\nDecisions Made: %d", decisionsMade);
-
     printf("\n====================================\n");
 
-    // Check whether the player has survived
+    // Death / respawn (unchanged)
     if (stability < 50)
     {
         printf("\n\n");
@@ -226,13 +389,9 @@ void makeDecision(int index)
         printf("\nYour existence has been erased.");
         printf("\n\nPress ENTER to respawn...");
 
-        // Clear the leftover newline from scanf
+        getchar();
         getchar();
 
-        // Wait for the player to press Enter
-        getchar();
-
-        // Respawn
         stability = 100;
 
         printf("\n====================================\n");
@@ -243,7 +402,6 @@ void makeDecision(int index)
         printf("\nTimeline Stability: 100%%\n");
     }
 }
-
 
 
 void travelToEvent()

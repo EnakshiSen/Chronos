@@ -1,60 +1,119 @@
-
 101
 |1914|World War I|A conflict between major world powers is about to escalate into a global war.
 |Prevent the assassination that triggered the July Crisis
 |Encourage diplomatic negotiations
 |Allow the war to begin
+|Offer Franz Ferdinand a bulletproof carriage|Franz Ferdinand survives, but the carriage is so heavy it never leaves the palace garage.
+|Warn him to cancel the Sarajevo visit|He cancels, and Europe's biggest crisis becomes a scheduling dispute.
+|Host a peace summit in neutral Switzerland|The summit succeeds mostly because the chocolate is excellent.
+|Form a European alliance council|The council meets daily, but every agenda item is to reschedule the next meeting.
+|Secretly supply both sides with maps|Both armies arrive on time, at the wrong places.
+|Warn neutral countries to prepare|Neutral nations stockpile supplies and invent the phrase I told you so.
 
 102
 |1939|World War II|Germany is preparing to invade Poland, threatening to trigger another global conflict.
 |Prevent the invasion of Poland
 |Attempt to negotiate peace
 |Allow the invasion
+|Sabotage the invasion railways|Trains are delayed for weeks. Military planners discover the timetable was the real enemy.
+|Send a warning to Polish commanders|Poland mobilises early, and the generals finally get to use their very organised maps.
+|Propose a ceasefire conference in Geneva|The conference runs so long that the invasion plans expire.
+|Appeal to Germany's generals directly|Several generals agree it is a bad idea, but nobody wants to be the one to tell the boss.
+|Prepare underground resistance networks|Resistance groups form quickly, communicating through suspiciously ordinary newspaper advertisements.
+|Evacuate national archives to safety|Libraries and archives survive, and archivists become surprisingly powerful.
 
 103
 |1945|Hiroshima and Nagasaki|The United States is preparing to use atomic weapons against Japan.
 |Prevent the atomic bombings
 |Allow the bombings
 |Arrange a demonstration of the atomic weapon
+|Persuade scientists to sign a petition|The petition gathers thousands of signatures and a long debate about who should sign first.
+|Leak the plan to neutral diplomats|Diplomats scramble, and telegrams become the busiest mail service on Earth.
+|Document the aftermath for future generations|The records become a powerful global reminder, studied in classrooms for decades.
+|Push for an immediate peace treaty|Treaty talks begin quickly, and negotiators discover that tea is a diplomatic tool.
+|Hold the demonstration over an empty ocean|Observers are impressed, and even more impressed by the very long boat ride.
+|Invite international observers|Observers from many nations attend, and the guest list becomes a bigger crisis than the experiment.
 
 104
 |1687|Publication of Principia Mathematica|Isaac Newton is preparing to publish his groundbreaking work on classical mechanics and universal gravitation.
 |Ensure the book is published
 |Prevent its publication
 |Introduce Newton to an alternative scientific theory
+|Fund the printing of extra copies|Copies spread across Europe, and bookshops invent the heavy reading shelf.
+|Persuade Halley to edit the manuscript|Halley tidies the proofs, and Newton grudgingly admits there was a typo.
+|Hide the manuscript in a library|A librarian finds it centuries early and files it under Cooking.
+|Convince Newton to focus on alchemy|Newton spends years trying to turn lead into gold and mostly produces smelly rooms.
+|Introduce Leibniz's calculus notation|Mathematicians begin a friendly debate that lasts about three hundred years.
+|Show him early ideas on relativity|Newton stares at the equations for a week, then asks if there is a simpler version.
 
 105
 |1857|Indian Rebellion of 1857|Indian soldiers and regional rulers are preparing to revolt against British East India Company rule.
 |Support the rebellion
 |Prevent the uprising
 |Attempt to unite the different rebel groups
+|Supply the rebels with strategy maps|The maps help, though half the legend is written in a very confusing code.
+|Help spread the rebellion's message|Messages travel faster than expected, thanks to a surprising number of chapatis.
+|Persuade the British to reform policies|Reforms are drafted, argued over, and sent to a committee that never meets.
+|Calm the soldiers' grievances|Tensions ease briefly, and everyone agrees the cartridge rumours were the real problem.
+|Appoint a unified command council|The council forms quickly, then spends a week deciding on a name.
+|Establish a shared communication network|Couriers run a flawless network, apart from the one who keeps getting lost.
 
 106
 |1903|Wright Brothers First Flight|Orville and Wilbur Wright are preparing to test their powered flying machine.
 |Help them achieve the first successful flight
 |Sabotage the experiment
 |Introduce an alternative aircraft design
+|Provide stronger lightweight materials|The plane gets lighter, and Orville demands a lighter lunch to match.
+|Offer a better launch rail|The launch is smoother, and the rail is promptly declared the star of the show.
+|Misplace the propeller|The propeller is found in a barn, but the flight is pushed back by months.
+|Delay the test with bad weather forecasts|Everyone waits for sunshine, and the Wrights perfect their sandwiches.
+|Suggest a biplane with three wings|A triplane appears, and engineers argue that three wings are obviously better than two.
+|Introduce a gliding-only design|Gliding clubs flourish, but nobody gets anywhere in a hurry.
 
 107
 |2014|Mangalyaan Mars Mission|India's Mars Orbiter Mission is approaching its critical Mars orbit insertion manoeuvre.
 |Ensure successful Mars orbit insertion
 |Alter the spacecraft trajectory
 |Abort the mission
+|Run an extra engine health check|The check passes, and the engineers celebrate with a very large batch of snacks.
+|Prepare a backup trajectory plan|The backup plan is never needed, but everybody feels extremely smug.
+|Add a flyby of Phobos|The orbiter takes extra photos of Phobos and mission control starts a Phobos fan club.
+|Lower the orbit altitude|The orbiter sees the Martian surface in greater detail, and the camera team demands more storage.
+|Park the spacecraft in a safe orbit|The spacecraft waits patiently while engineers debate its next move.
+|Redirect it to study the Moon instead|The Moon welcomes a surprise visitor, and lunar scientists enjoy the unexpected bonus.
 
 108
-|1637|Descartes and Analytic Geometry|René Descartes is preparing to publish La Géométrie, connecting algebra and geometry.
+|1637|Descartes and Analytic Geometry|Rene Descartes is preparing to publish La Geometrie, connecting algebra and geometry.
 |Ensure the publication succeeds
 |Prevent the publication
 |Introduce an alternative mathematical framework
+|Help Descartes print extra copies|Copies reach every university, and students everywhere are now doomed to plot points.
+|Add clearer diagrams to the book|The diagrams are so clear that even the printer understands the graphs.
+|Convince him to focus on philosophy|Descartes thinks so much that he forgets what he was thinking about.
+|Misplace the manuscript|The manuscript turns up in a drawer, a little dusty but completely fine.
+|Introduce Fermat's methods|Fermat writes a margin note that mathematicians argue about for centuries.
+|Introduce polar coordinates early|Circles become easy, and everyone else's graphs look suddenly rather square.
 
 109
 |1610|Galileo's Astronomical Discoveries|Galileo is making observations that challenge the traditional understanding of the universe.
 |Support his astronomical discoveries
 |Suppress the observations
 |Introduce the findings to scientific authorities
+|Provide a better telescope lens|The lens is sharper, and Galileo spends the night naming every crater he sees.
+|Publish his findings in Italian|Ordinary people read the findings, and tavern conversation becomes remarkably astronomical.
+|Cloud the night sky for weeks|Clouds cover the sky, and Galileo takes up painting to pass the time.
+|Persuade him to stay quiet|He agrees, but writes everything in a very large secret notebook.
+|Arrange a telescope demonstration|The authorities look through the telescope, and half of them ask to borrow it.
+|Present the findings to the Pope|The Pope listens politely, and the meeting runs overtime by several hours.
 
 110
 |1956|Dartmouth Conference|Scientists are gathering to explore whether machines can simulate aspects of human intelligence.
 |Support the development of artificial intelligence
 |Prevent the conference
 |Introduce a radically different research direction
+|Fund a research lab for the attendees|The lab opens, and the first coffee machine becomes an official research assistant.
+|Invite more mathematicians to the conference|The guest list grows, and the name tags run out before lunch.
+|Cancel the conference venue booking|The venue is rebooked for a bridge tournament, and AI researchers quietly take up bridge.
+|Postpone it by a few years|The researchers meet later, and have a lot more to argue about.
+|Suggest research based on biology|Biologists and engineers meet and agree that brains are very complicated.
+|Propose a focus on robotics first|Robots learn to walk before they learn to chat, and everyone applauds the stumbling.
