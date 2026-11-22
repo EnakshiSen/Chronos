@@ -29,6 +29,29 @@ void showEvent(int index);
 void travelToEvent();
 void makeDecision(int index);
 void showConsequence(int index, int decision);
+void showRules();
+
+void showRules()
+{
+    printf("\n====================================\n");
+    printf("          RULES OF CHRONOS\n");
+    printf("====================================\n");
+
+    printf("\n1. You are a time traveler. Visit historical events using their Event ID.");
+    printf("\n2. At each event you choose 1 of 3 interventions.");
+    printf("\n3. Timeline Stability starts at 100%% and can never go above 100%%.");
+    printf("\n4. Your choices change stability:");
+    printf("\n5. Revisit an event to unlock follow-up options based on your first choice.");
+    printf("\n6. History is connected. If you disrupt an event that a later event");
+    printf("\n   depends on, visiting that later event causes a PARADOX and costs");
+    printf("\n   an extra 5%% stability for each broken dependency.");
+    printf("\n7. If stability drops below 50%%, the timeline collapses. You die");
+    printf("\n   and respawn with stability restored to 100%%.");
+    printf("\n8. Use the menu to view the timeline, check stability, or exit.");
+
+    printf("\n\nPress ENTER to begin...");
+    getchar();
+}
 
 int readEvents()
 {
@@ -127,23 +150,7 @@ int readEvents()
 
     fclose(fp);
 
-    // Display all loaded events
-    int i;
-    for (i = 0; i < count; i++)
-    {
-        printf("\n====================================\n");
-        printf("Event ID: %d\n", events[i].id);
-        printf("Year: %d\n", events[i].year);
-        printf("Title: %s\n", events[i].title);
-        printf("Scenario: %s\n", events[i].scenario);
-
-        printf("\nAvailable Decisions:\n");
-        printf("1. %s\n", events[i].choiceA);
-        printf("2. %s\n", events[i].choiceB);
-        printf("3. %s\n", events[i].choiceC);
-    }
-
-    printf("\nTotal events loaded: %d\n", count);
+    
     return count;
 }
 
@@ -441,7 +448,7 @@ int main()
         printf("No events loaded. Exiting game.\n");
         return 0;
     }
-
+    showRules(); 
     do
     {
         printf("\n====================================\n");
