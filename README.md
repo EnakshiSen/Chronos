@@ -1,2 +1,2 @@
-# CRONOS
-time travelling game in c 
+#CHRONOS
+A C-based historical time-travel simulation game inspired by the butterfly effect. Players explore significant historical events, make decisions that alter the course of history, and manage timeline stability as they navigate through different periods. Combining interactive storytelling, decision-making mechanics, and core C programming concepts, CHRONOS explores the consequences of changing the past.
